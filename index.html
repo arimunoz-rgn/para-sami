@@ -1,0 +1,279 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorpresa de Amor</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #dab886;
+            color: #5e3c2b;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background-color: #fdf8f2;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8pxr #dab886;
+            max-width: 600px;
+            width: 90%;
+        }
+        button {
+            background-color: #c6a688;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        button:hover {
+            background-color: #9e7c61;
+        }
+
+        /* Modales */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dab886;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fdf8f2;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px #dab886;
+        }
+
+        /* Corazones flotando */
+        @keyframes floatHearts {
+            from {
+                transform: translateY(100vh);
+            }
+            to {
+                transform: translateY(-100vh);
+            }
+        }
+        .heart {
+            position: fixed;
+            color: rgb(208, 0, 0);
+            font-size: 30px;
+            animation: floatHearts 5s linear infinite;
+        }
+
+        /* Flores */
+        .flower {
+            display: inline-block;
+            font-size: 50px;
+            margin: 10px;
+            color: gray; /* color de capullo */
+            transform: scale(0.5);
+            transition: all 3s ease;
+        }
+        .flower.open.azul { color: #1e90ff; transform: scale(1.5); } /* Flores abiertas en azul */
+        .flower.open.turquesa { color: #40e0d0; transform: scale(1.5); }
+        /* Poema */
+#poema {
+    margin-top: 40px;
+    font-size: 24px;
+    color: #5e3c2b;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+        /* Besos flotando */
+        @keyframes floatBeso {
+            from {
+                transform: translateY(100vh);
+            }
+            to {
+                transform: translateY(-100vh);
+            }
+        }
+        .beso {
+            position: fixed;
+            color: pink;
+            font-size: 50px;
+            animation: floatBeso 3s linear infinite;
+        }
+
+        /* Mensaje Te Amo */
+#mensaje-te-amo {
+    position: absolute;
+    top: 5vh;/* Ajustado para estar un poco más abajo, justo encima de las flores */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    color: #fdf8f2;
+    font-weight: bold;
+    animation: fadeIn 3s forwards;
+}
+
+        /* Animación de desvanecimiento del mensaje */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Portada -->
+    <div id="portada" class="container">
+        <h1>Hola,mi amor, esta es otra sorpresa para ti, espero te guste mucho, te amo</h1>
+        <button onclick="mostrarMenu()">Siguiente</button>
+    </div>
+
+    <!-- Menú de Amor -->
+    <div id="menu" class="modal">
+        <div class="modal-content">
+            <h2>Menú de Amor</h2>
+            <button onclick="mostrarOpcion1()">Opción 1</button>
+            <button onclick="mostrarOpcion2()">Opción 2</button>
+            <button onclick="mostrarOpcion3()">Opción 3</button>
+        </div>
+    </div>
+
+    <!-- Opción 1 - Corazones flotando -->
+    <div id="opcion1" class="modal">
+        <div class="modal-content">
+            <h2>Cada corazón que cuentes es una parte de todo el amor que te tengo, mi lindo y bello borreguito,te amo</h2>
+            <div id="corazones"></div>
+            <button onclick="volverAlMenu()">Volver al Menú</button>
+        </div>
+    </div>
+
+    <!-- Opción 2 - Poema y beso -->
+    <div id="opcion2" class="modal">
+        <div class="modal-content">
+            <h2>Contigo</h2>
+            <p> Desde el primer momento que te vi, supe que mi vida cambiaría para siempre. 
+                En este tiempo que estoy contigo, descubro nuevas razones para amarte. 
+                Tu presencia en mi vida no solo trajo una luz a mi vida, trajo consigo la sonrisa que le faltaba a mis días,
+                tu linda y bella sonrisa era la pieza faltante en mi vida, eres la melodía que calma mis pesares pues
+                podría escucharte durante años y mi corazón seguiría latiendo por ti. 
+                Aunque sabemos que nuestro futuro esta lleno de desafíos quiero estar a tu lado afrontándolos pues sin ti,entonces, ¿qué es felicidad? </p>
+            <div id="besos">
+                <!-- 5 corazones flotando -->
+                <span class="heart" style="top: 10vh; left: 20vw;">❤️</span>
+                <span class="heart" style="top: 20vh; left: 30vw;">❤️</span>
+                <span class="heart" style="top: 30vh; left: 40vw;">❤️</span>
+                <span class="heart" style="top: 40vh; left: 50vw;">❤️</span>
+                <span class="heart" style="top: 50vh; left: 60vw;">❤️</span>
+            </div>
+            <button onclick="volverAlMenu()">Volver al Menú</button>
+        </div>
+    </div>
+
+    <!-- Opción 3 - Flores animadas -->
+    <div id="opcion3" class="modal">
+        <div class="modal-content">
+            <div id="mensaje-te-amo">Te amo,amorchito mío" </div> <!-- Mensaje ajustado -->
+            <span class="flower" id="flor1">&#x1F338;</span>
+            <span class="flower" id="flor2">&#x1F338;</span>
+            <span class="flower" id="flor3">&#x1F338;</span>
+            <span class="flower" id="flor4">&#x1F338;</span>
+            <div>
+                <button onclick="abrirFlores()">Da clic</button>
+                <button onclick="mostrarTeAmo()">Te Amo</button>
+            </div>
+            <div id="poema">
+                <p> Eres tan lindo y bello por dentro y por fuera como esas lindas y bonitas flores que estan floreciendo,
+                    para ti mi corazón, mi lindo y bello borreguito, te amo mi cielo 
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje Final -->
+    <div id="mensaje-final" class="modal">
+        <div class="modal-content">
+            <h2>Te amo mucho</h2>
+            <p>Que te vaya muy bien, mucha suerte y recuerda,si me necesitas y si no,aquí estare siempre para ti mi Amor
+                "Mi amor por ti es como el infinito del universo: eterno, insondable y siempre creciendo." 
+                Te amo.
+            </p>
+            <button onclick="finalizar()">Salir</button>
+        </div>
+    </div>
+
+    <script>
+        function mostrarMenu() {
+            document.getElementById('portada').style.display = 'none';
+            document.getElementById('menu').style.display = 'flex';
+        }
+
+        function mostrarOpcion1() {
+            cerrarModales();
+            document.getElementById('opcion1').style.display = 'flex';
+            const corazones = document.getElementById('corazones');
+            corazones.innerHTML = '';
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                heart.textContent = '❤';
+                corazones.appendChild(heart);
+            }
+        }
+
+        function mostrarOpcion2() {
+            cerrarModales();
+            document.getElementById('opcion2').style.display = 'flex';
+        }
+
+        function mostrarOpcion3() {
+            cerrarModales();
+            document.getElementById('opcion3').style.display = 'flex';
+        }
+
+        function abrirFlores() {
+            const flores = ['flor1', 'flor2', 'flor3', 'flor4'];
+            const colores = ['azul', 'turquesa'];
+            flores.forEach((id, index) => {
+                setTimeout(() => {
+                    document.getElementById(id).classList.add('open', colores[index % 2]);
+                }, index * 3000);
+            });
+        }
+
+        function mostrarTeAmo() {
+            cerrarModales();
+            document.getElementById('mensaje-final').style.display = 'flex';
+        }
+
+        function finalizar() {
+            alert('Te amoooooo ❤️');
+            location.reload();
+        }
+
+        function volverAlMenu() {
+            cerrarModales();
+            document.getElementById('menu').style.display = 'flex';
+        }
+
+        function cerrarModales() {
+            document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
+        }
+    </script>
+</body>
+</html>
+
